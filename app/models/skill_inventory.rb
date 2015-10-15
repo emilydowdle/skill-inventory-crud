@@ -4,11 +4,21 @@
 # delete a skill (delete)
 
 require 'yaml/store'
-require_relative 'skill'
 
 class SkillInventory
   def self.database
-    @database ||= YAML::Store.new("db/skill_inventory")
+    if ENV["RACK_ENV"] == 'test'
+      @database ||= YAML::Store.new("db/skill_inventory_test")
+    else
+      @database ||= YAML::Store.new("db/skill_inventory")
+    end
+  end
+
+  def self.delete_all
+    database.transaction do
+      database['skills'] = []
+      database['total'] = 0
+    end
   end
 
   def self.create(skill)
@@ -42,12 +52,10 @@ class SkillInventory
   end
 
   def self.all
-    poop = raw_skills.map { |data| Skill.new(data)}
-    puts poop.methods
-    poop
+    raw_skills.map { |data| Skill.new(data) }
   end
 
-  def self.raw_task(id)
+  def self.raw_skill(id)
     raw_skills.find { |skill| skill["id"] == id }
   end
 

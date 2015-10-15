@@ -1,6 +1,4 @@
-require 'models/skill_inventory'
-
-class Skill < Sinatra::Base
+class Skill
 
   attr_reader :title,
               :description,

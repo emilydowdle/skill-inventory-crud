@@ -1,6 +1,12 @@
 ---
 skills:
-- id: 1
-  title: One1
-  description: Two2
-total: 1
+- id: 2
+  title: Test
+  description: testing edited
+- id: 3
+  title: Awesome sauce
+  description: This sheez is awesome
+- id: 4
+  title: new skill
+  description: awesome new skill
+total: 4
