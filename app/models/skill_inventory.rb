@@ -1,65 +1,41 @@
-# Users should be able to enter a skill (create),
-# see a list of all of the skills, see each skill
-# individually (read), edit a skill (update), and
-# delete a skill (delete)
-
-require 'yaml/store'
-
 class SkillInventory
   def self.database
     if ENV["RACK_ENV"] == 'test'
-      @database ||= YAML::Store.new("db/skill_inventory_test")
+      @database ||= Sequel.sqlite("db/skill_inventory_test.sqlite3")
     else
-      @database ||= YAML::Store.new("db/skill_inventory")
+      @database ||= Sequel.sqlite("db/skill_inventory_development.sqlite3")
     end
   end
 
   def self.delete_all
-    database.transaction do
-      database['skills'] = []
-      database['total'] = 0
-    end
+    database.from(:skills).delete
   end
 
   def self.create(skill)
-    database.transaction do
-      database['skills'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['skills'] << { "id" => database['total'], "title" => skill[:title], "description" => skill[:description] }
-    end
+    table = database.from(:skills)
+    table.insert(:title => skill[:title], :description => skill[:description])
   end
 
   def self.update(id, data)
-    database.transaction do
-      target = database['skills'].find { |skill| skill["id"] == id }
-      target["title"] = data[:title]
-      target["description"] = data[:description]
-    end
+    table = database.from(:skills)
+    table.where(:id => id).update(:title => data[:title], :description => data[:description])
   end
 
   def self.delete(id)
-    database.transaction do
-      database['skills'].delete_if { |skill| skill["id"] == id }
-    end
-  end
-
-  def self.raw_skills
-    # raw_skills.find { |skill | skill["id"] == id }
-    database.transaction do
-      database['skills'] || []
-    end
+    table = database.from(:skills)
+    table.where(:id => id).delete
   end
 
   def self.all
-    raw_skills.map { |data| Skill.new(data) }
-  end
-
-  def self.raw_skill(id)
-    raw_skills.find { |skill| skill["id"] == id }
+    table = database.from(:skills).to_a
+    table.map do |data|
+      Skill.new(data)
+    end
   end
 
   def self.find(id)
-    Skill.new(raw_skill(id))
+    table = database.from(:skills)
+    skill = table.where(:id => id).to_a.first
+    Skill.new(skill)
   end
 end

@@ -9,7 +9,7 @@ class ViewTest < FeatureTest
     click_link("Skill Index")
     assert_equal '/skills', current_path
   end
-  
+
   def test_user_sees_correct_page_new
     visit '/'
       # save_and_open_page # launchy gem opens test in browser

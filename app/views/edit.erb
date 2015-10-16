@@ -1,13 +1,22 @@
-<h1>Edit <%= @skill.title %></h1>
-<form action="/skills/<%= @skill.id %>" method="POST" class="container">
-  <input type="hidden" name="_method" value="PUT" />
-  <div class="form-group">
-    <label class="col-md-2" for="title">Skill Title:</label>
-    <div class="col-md-10"><input name="skill[title]" type="text" class="form-control" id="title" placeholder="Title" value= "<%= @skill.title %>"</div>
-  </div>
-  <div class="form-group">
-    <label class="col-md-2" for="details">Skill Details:</label>
-    <div class="col-md-10"><input name="skill[description]" type="textarea" class="form-control" id="details" placeholder="Details" value=<%= @skill.description %>></div>
-  </div>
-  <button type="submit" value="Submit" class="btn btn-lg btn-primary">Submit</button>
-</form>
+<div class="container">
+
+  <div class="jumbotron navy-background">
+      <h1>Edit: <%= @skill.title %></h1>
+      <p class="">
+        Use the form below to make yourself seem even more awesome.
+      </p>
+
+      <form action="/skills/<%= @skill.id %>" method="POST" class="container">
+        <input type="hidden" name="_method" value="PUT" />
+        <div class="form-group margin-top-40">
+          <label class="" for="title">Skill Title:</label>
+          <div class=""><input name="skill[title]" type="text" class="form-control" id="title" placeholder="Title" value= "<%= @skill.title %>"</div>
+        </div>
+        <div class="form-group margin-top-20">
+          <label class="" for="details">Skill Details:</label>
+          <div class=""><input name="skill[description]" type="textarea" class="form-control" id="details" placeholder="Details" value="<%= @skill.description %>"></div>
+        </div>
+        <button type="submit" value="Submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+</div>

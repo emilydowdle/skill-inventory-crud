@@ -1,0 +1,35 @@
+.margin-top-80 {
+  margin-top: 80px;
+}
+
+.margin-right-15 {
+  margin-right: 15px;
+}
+
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.background-pattern {
+  background: url("/images/retina_wood.png");
+}
+
+.navy-background {
+  background-color: #384252;
+  color: white;
+}
+
+.highlight-button {
+  background: #E25858;
+  border: 2px solid white;
+  color: white;
+  margin-right: 20px;
+}
+
+.white-text a {
+  color: white;
+}

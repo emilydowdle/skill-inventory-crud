@@ -5,16 +5,15 @@ class SkillInventoryTest < Minitest::Test
   def create(num)
     num.times do |i|
       SkillInventory.create({ :title => "Skill ##{i + 1}",
-                  :description => "Skill description ##{i + 1}" })
+                              :description => "Skill description ##{i + 1}" })
     end
   end
 
   def test_find_skill_by_id
     create(1)
-
-    skill = SkillInventory.find(1)
-
-    assert_equal 1, skill.id
+    skill = SkillInventory.find(SkillInventory.all.first.id)
+    # binding.pry
+    assert_equal SkillInventory.all.first.id, skill.id
     assert_equal "Skill #1", skill.title
   end
 
@@ -33,7 +32,7 @@ class SkillInventoryTest < Minitest::Test
 
     assert_equal 2, skills.count
 
-    SkillInventory.delete(1)
+    SkillInventory.delete(SkillInventory.all.first.id)
 
     updated_skills = SkillInventory.all
 
@@ -43,14 +42,14 @@ class SkillInventoryTest < Minitest::Test
   def test_edit_task
     create(1)
 
-    assert_equal "Skill #1", SkillInventory.find(1).title
+    assert_equal "Skill #1", SkillInventory.find(SkillInventory.all.first.id).title
 
-    SkillInventory.update(1, { :title => "Title",
+    SkillInventory.update(SkillInventory.all.first.id, { :title => "Title",
                                :description => "Description" } )
 
     assert_equal 1, SkillInventory.all.count
-    assert_equal "Title", SkillInventory.find(1).title
-    assert_equal "Description", SkillInventory.find(1).description
+    assert_equal "Title", SkillInventory.find(SkillInventory.all.first.id).title
+    assert_equal "Description", SkillInventory.find(SkillInventory.all.first.id).description
   end
 
 end

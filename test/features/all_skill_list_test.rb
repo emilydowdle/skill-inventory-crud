@@ -4,7 +4,6 @@ require 'tilt/erb'
 class AllSkillsListTest < FeatureTest
 
   def test_skills_route_displays_all_skills
-
     SkillInventory.create({ title: "New Skill", description: "New Skill Description"})
 
     visit '/skills'

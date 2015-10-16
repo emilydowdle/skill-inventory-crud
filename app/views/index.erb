@@ -1,9 +1,21 @@
-<h1>My Skills</h1>
-<% @skills.each do |skill| %>
-  <h3><%= skill.id %>: <a href="/skills/<%= skill.id %>"><%= skill.title %></a></h3>
-  <a href='/skills/<%= skill.id %>/edit'>Edit</a>
-  <form action="/skills/<%= skill.id %>" method="POST">
-    <input type="hidden" name="_method" value="DELETE">
-    <input type="submit" value="Delete"/>
-  </form>
-<% end %>
+<div class="container">
+
+  <div class="jumbotron navy-background">
+      <h1>Your Skills</h1>
+      <p class="">
+        Go ahead, congratulate yourself. You've got skills. Mad skills.
+      </p>
+      <div class="">
+        <% @skills.each do |skill| %>
+          <div class="margin-top-40">
+            <h3 class="white-text"><%= skill.id %>: <a href="/skills/<%= skill.id %>"><%= skill.title %></a></h3>
+            <a href='/skills/<%= skill.id %>/edit'><button type="button" class="margin-right-15 col-md-1 btn btn-default">Edit</button></a>
+            <form action="/skills/<%= skill.id %>" method="POST">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-default" type="submit" value="Delete">Delete</button>
+            </form>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="/application.css">
+  <link href='/css/bootstrap.css' rel='stylesheet'>
+  <link href='/css/custom.css' rel='stylesheet'>
   <title>Skill Inventory</title>
 </head>
-<body>
+<body class="background-pattern">
+  <nav class="navbar navbar-default">
+
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/"><strong>Skill Inventory</strong></a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/skills">All Skills</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/skills/new">Create New Skill</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- <nav >
+    <ul class="nav navbar-nav">
+      <li>Dashboard</li>
+      <li>All Tasks</li>
+      <li>New Task</li>
+    </ul>
+  </nav> -->
   <%= yield %>
 </body>
 </html>
