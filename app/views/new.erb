@@ -1,7 +1,33 @@
-<form action="/skills" method="POST">
-  <p>Enter a new skill:</p>
-  <input type="text" name='skill[title]'/></br>
-  <input type="textarea" name='skill[description]'></input></br>
+<div class="container">
+  <div class="jumbotron navy-background">
+      <h1>
+        What's Your New Skill?
+      </h1>
+      <p class="">
+        Use the form below to make yourself seem awesome.
+      </p>
 
-  <input type="submit" value="Submit"/>
-</form>
+
+    <!-- <form action="/skills" method="POST">
+      <p>Enter a new skill:</p>
+      <input type="text" name='skill[title]'/></br>
+      <input rows="5" type="textarea" name='skill[description]'></input></br>
+
+      <input type="submit" value="Submit"/>
+    </form> -->
+
+    <form action="/skills" method="POST" class="container">
+      <div class="form-group margin-top-40">
+        <label class="" for="title">Skill Title:</label>
+        <input name="skill[title]" type="text" class="form-control" id="title" placeholder="Title">
+        </input>
+      </div>
+      <div class="form-group margin-top-20">
+        <label class="" for="details">Skill Details:</label>
+        <textarea name="skill[description]" type="textarea" rows="5" class="form-control" id="details" placeholder="Details"></textarea>
+      </div>
+      <button type="submit" value="Submit" class="white-button-border btn btn-danger pull-right">Submit</button>
+    </form>
+
+  </div>
+</div>

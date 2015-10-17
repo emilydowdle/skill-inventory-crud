@@ -1,7 +1,10 @@
 <div class="container">
 
   <div class="jumbotron navy-background">
-      <h1>Edit: <%= @skill.title %></h1>
+      <h1>
+        Edit Your Skill:<br/>
+        <%= @skill.title %>
+      </h1>
       <p class="">
         Use the form below to make yourself seem even more awesome.
       </p>
@@ -10,13 +13,14 @@
         <input type="hidden" name="_method" value="PUT" />
         <div class="form-group margin-top-40">
           <label class="" for="title">Skill Title:</label>
-          <div class=""><input name="skill[title]" type="text" class="form-control" id="title" placeholder="Title" value= "<%= @skill.title %>"</div>
+          <input name="skill[title]" type="text" class="form-control" id="title" placeholder="Title" value= "<%= @skill.title %>">
+          </input>
         </div>
         <div class="form-group margin-top-20">
           <label class="" for="details">Skill Details:</label>
-          <div class=""><input name="skill[description]" type="textarea" class="form-control" id="details" placeholder="Details" value="<%= @skill.description %>"></div>
+          <textarea name="skill[description]" type="textarea" rows="5" class="form-control" id="details" placeholder="Details"><%= @skill.description %></textarea>
         </div>
-        <button type="submit" value="Submit" class="btn btn-default">Submit</button>
+        <button type="submit" value="Submit" class="white-button-border btn btn-danger pull-right">Submit</button>
       </form>
     </div>
 </div>
